@@ -1,8 +1,9 @@
 import flet as ft
 
 
-def main(page: ft.Page):
-    page.add(ft.SafeArea(ft.Text("Hello, Flet!")))
+async def main(page: ft.Page):
+    await page.add_async(ft.Text("hello world"))
+    await page.update_async()
 
-
-ft.app(main)
+if __name__ == "__main__":
+    ft.app(target=main, assets_dir="assets", port=9090)

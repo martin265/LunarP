@@ -1,9 +1,17 @@
 import flet as ft
+from Controller.sidebar import SidebarMenu
 
 
 async def main(page: ft.Page):
     await page.add_async(ft.Text("hello world"))
     await page.update_async()
+
+    side_navigation = SidebarMenu(page=page)
+
+    #  ============== including the side navigation here ===========//
+    await page.add_async(
+
+    )
 
 if __name__ == "__main__":
     ft.app(target=main, assets_dir="assets", port=9090)

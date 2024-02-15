@@ -3,7 +3,8 @@ from Controller.sidebar import SidebarMenu
 
 
 async def main(page: ft.Page):
-    await page.add_async(ft.Text("hello world"))
+    page.theme_mode = ft.ThemeMode.LIGHT
+    page.window_center = True
     await page.update_async()
 
     side_navigation = SidebarMenu(page=page)

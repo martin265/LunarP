@@ -23,8 +23,9 @@ class SidebarMenu:
             ),
             selected_index=0,
             min_width=80,
-            min_extended_width=250,
+            min_extended_width=50,
             expand=False,
+            group_alignment=-0.9,
             height=400,
             #  ================ // the navigation destinations will be here ======= //
             destinations=[

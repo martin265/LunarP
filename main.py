@@ -10,8 +10,16 @@ async def main(page: ft.Page):
 
     #  ============== including the side navigation here ===========//
     await page.add_async(
-
+        side_navigation.navigation_rail,
+        ft.Row(
+            [
+                ft.Column(side_navigation.all_pages, alignment=ft.MainAxisAlignment.START, expand=True)
+            ],
+            expand=True
+        )
     )
+    #  ================= // updating the ui here ================ //
+    await page.update_async()
 
 if __name__ == "__main__":
     ft.app(target=main, assets_dir="assets", port=9090)

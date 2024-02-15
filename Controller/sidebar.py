@@ -25,6 +25,7 @@ class SidebarMenu:
             min_width=80,
             min_extended_width=250,
             expand=False,
+            height=400,
             #  ================ // the navigation destinations will be here ======= //
             destinations=[
                 ft.NavigationRailDestination(

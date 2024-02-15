@@ -7,6 +7,8 @@ class SidebarMenu:
         self.page = page
         #  ================ the list for all the pages here =========== //
         self.all_pages = []
+        # ============= calling the selected index page function ========= //
+        self.select_page_destination()
     
         # =========== the main side navigation for the desktop application will be here ======== //
         self.navigation_rail = ft.NavigationRail(
@@ -33,7 +35,8 @@ class SidebarMenu:
                         color=ft.colors.BLACK,
                     )
                 )
-            ]
+            ],
+            on_change=self.destination_pages
 
         )
 
@@ -44,6 +47,25 @@ class SidebarMenu:
             for single_page, index in enumerate(self.all_pages):
                 single_page.visible = True if index == self.navigation_rail.selected_index else False
                 await self.page.update_async()
+        except Exception as ex:
+            self.page.snack_bar = ft.SnackBar(
+                bgcolor=ft.colors.RED_ACCENT,
+                content=ft.Row(
+                    controls=[
+                        ft.Text(
+                            "something went wrong at {}".format(ex)
+                        )
+                    ]
+                )
+            )
+            self.page.snack_bar.open = True
+            await self.page.update_async()
+
+    #  ===================== function will call the selected index function ========== //
+    async def destination_pages(self, e):
+        try:
+            await self.select_page_destination()
+
         except Exception as ex:
             self.page.snack_bar = ft.SnackBar(
                 bgcolor=ft.colors.RED_ACCENT,
